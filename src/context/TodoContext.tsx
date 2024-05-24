@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, ReactNode } from 'react';
-import { ListOfTodos, FilterValue, Todo as TodoType, todoId, todoTitle, Todo } from '../types.js';
+import { ListOfTodos, FilterValue, Todo as TodoType, todoId, todoTitle} from '../types.js';
 import { TODO_FILTERS } from '../consts.js';
 import Swal from 'sweetalert2';
 
