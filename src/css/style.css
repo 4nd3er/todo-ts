@@ -1,0 +1,22 @@
+.btnSection {
+    display: flex;
+    justify-content: end;
+    margin: 1rem;
+    padding: 1rem;
+    z-index: 100;
+}
+
+.btnURL {
+    position: relative;
+    color: inherit;
+	margin: 3px;
+	padding: 3px 7px;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btnURL:hover {
+    border-color: #DB7676;
+}
