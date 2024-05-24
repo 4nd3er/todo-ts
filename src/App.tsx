@@ -168,12 +168,12 @@
 // }
 // export default App
 
-import { Todos } from './components/Todos.tsx';
-import { Footer } from './components/Footer.tsx';
-import { Header } from './components/Header.tsx';
-import { TodoProvider, useTodos } from './context/TodoContext.tsx';
+
+import { Todos } from './components/Todos';
+import { Footer } from './components/Footer';
+import { Header } from './components/Header';
+import { TodoProvider, useTodos } from './context/TodoContext';
 import { TODO_FILTERS } from './consts';
-import './css/style.css';
 
 const App = (): JSX.Element => {
     const {
@@ -186,7 +186,8 @@ const App = (): JSX.Element => {
         onClearCompleted,
         handleAddTodo,
         activeCount,
-        completedCount
+        completedCount,
+        setTitle
     } = useTodos();
 
     const filterTodos = todos.filter(todo => {
@@ -202,6 +203,7 @@ const App = (): JSX.Element => {
                 todos={filterTodos}
                 handleRemove={handleRemove}
                 handleCompleted={handleCompleted}
+                setTitle={setTitle}
             />
             <Footer
                 activeCount={activeCount}
@@ -209,14 +211,9 @@ const App = (): JSX.Element => {
                 filterSelected={filterSelected}
                 onClearCompleted={onClearCompleted}
                 handleFilterChange={handleFilterChange}
+                handleClick={handleClick}
+                todos={todos}
             />
-            {todos.length > 0 && (
-                <section className='btnSection'>
-                    <a className='btnURL' onClick={handleClick}>
-                        Copiar lista de tareas
-                    </a>
-                </section>
-            )}
         </div>
     );
 };

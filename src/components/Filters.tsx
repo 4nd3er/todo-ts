@@ -1,15 +1,19 @@
-import { FilterValue } from "../types"
+import { FilterValue, ListOfTodos } from "../types"
 import { FILTER_BUTTONS } from "../consts"
 
 interface Props {
     handleFilterChange: (filter: FilterValue) => void
     filterSelected: FilterValue
+    handleClick: () => void
+    todos: ListOfTodos
 }
 
 export const Filters: React.FC<Props> = (
     {
         filterSelected,
-        handleFilterChange
+        handleFilterChange,
+        handleClick,
+        todos
     }
 ) => {
     return (
@@ -30,6 +34,13 @@ export const Filters: React.FC<Props> = (
                     </li>
                 )
             })}
+            {todos.length > 0 && (
+                <li>
+                    <a onClick={handleClick}>
+                        Copiar lista de tareas
+                    </a>
+                </li>
+            )}
         </ul>
     )
 }

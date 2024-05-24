@@ -26,7 +26,8 @@
     * Va a tomar los props de cualquier forma
     * Para esto, se puede hacer de la siguiente manera
 */
-import { ListOfTodos, Todo as TodoType, todoId } from '../types';
+import { useState } from 'react';
+import { ListOfTodos, Todo as TodoType, todoId, todoTitle } from '../types';
 import { Todo } from './Todo';
 import { useAutoAnimate } from '@formkit/auto-animate/react';
 
@@ -34,16 +35,19 @@ interface Props {
     todos: ListOfTodos
     handleRemove: ({ id }: todoId) => void
     handleCompleted: ({ id, completed }: Pick<TodoType, 'id' | 'completed'>) => void
+    setTitle: (id: todoId, title: todoTitle) => void
 }
 
-export const Todos: React.FC<Props> = ({ todos, handleRemove, handleCompleted }) => {
+export const Todos: React.FC<Props> = ({ todos, handleRemove, handleCompleted, setTitle }) => {
+    const [todoEdit, setTodoEdit] = useState('');
     const [parent] = useAutoAnimate();
     return (
         <ul ref={parent} className='todo-list'>
-            {todos.map(todo => (
+            {todos?.map(todo => (
                 <li
                     key={todo.id}
-                    className={`${todo.completed ? 'completed' : ''}`}
+                    onDoubleClick={() => setTodoEdit(todo.id)}
+                    className={`${todo.completed ? 'completed' : ''} ${todoEdit === todo.id ? 'editing' : ''}`}
                 >
                     <Todo
                         key={todo.id}
@@ -52,6 +56,9 @@ export const Todos: React.FC<Props> = ({ todos, handleRemove, handleCompleted })
                         completed={todo.completed}
                         handleRemove={handleRemove}
                         handleCompleted={handleCompleted}
+                        todoEdit={todoEdit}
+                        setTodoEdit={setTodoEdit}
+                        setTitle={setTitle}
                     />
                 </li>
             ))}

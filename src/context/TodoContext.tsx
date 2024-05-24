@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, ReactNode } from 'react';
-import { ListOfTodos, FilterValue, Todo as TodoType, todoId, todoTitle } from '../types.js';
+import { ListOfTodos, FilterValue, Todo as TodoType, todoId, todoTitle, Todo } from '../types.js';
 import { TODO_FILTERS } from '../consts.js';
 import Swal from 'sweetalert2';
 
@@ -14,6 +14,7 @@ interface TodoContextProps {
     handleAddTodo: ({ title }: todoTitle) => void;
     activeCount: number;
     completedCount: number;
+    setTitle: (id: todoId, title: todoTitle) => void;
 }
 
 const TodoContext = createContext<TodoContextProps | undefined>(undefined);
@@ -132,6 +133,20 @@ export const TodoProvider = ({ children }: { children: ReactNode }) => {
         setItemStorage(newTodos);
     };
 
+    const setTitle = ({ id }: todoId, { title }: todoTitle) => {
+        const setTodo = todos.filter(todo => todo.id === id);
+        setTodo[0].title = title;
+        todos.forEach((todo): void => {
+            if (todo.id === id) {
+                todo = setTodo[0];
+                return;
+            }
+        })
+        setTodos(todos);
+        jsonURL(todos);
+        setItemStorage(todos);
+    }
+
     const activeCount = todos.filter(todo => !todo.completed).length;
     const completedCount = todos.length - activeCount;
 
@@ -146,7 +161,8 @@ export const TodoProvider = ({ children }: { children: ReactNode }) => {
             onClearCompleted,
             handleAddTodo,
             activeCount,
-            completedCount
+            completedCount,
+            setTitle
         }}>
             {children}
         </TodoContext.Provider>

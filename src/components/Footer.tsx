@@ -1,4 +1,4 @@
-import { FilterValue } from "../types"
+import { FilterValue, ListOfTodos } from "../types"
 import { Filters } from "./Filters"
 
 interface Props {
@@ -7,6 +7,8 @@ interface Props {
     filterSelected: FilterValue
     onClearCompleted: () => void
     handleFilterChange: (filter: FilterValue) => void
+    handleClick: () => void
+    todos: ListOfTodos
 }
 
 export const Footer: React.FC<Props> = ({
@@ -14,7 +16,9 @@ export const Footer: React.FC<Props> = ({
     completedCount = 0,
     filterSelected,
     handleFilterChange,
-    onClearCompleted
+    onClearCompleted,
+    handleClick,
+    todos
 }) => {
     return (
         <footer className="footer">
@@ -24,6 +28,8 @@ export const Footer: React.FC<Props> = ({
             <Filters
                 filterSelected={filterSelected}
                 handleFilterChange={handleFilterChange}
+                handleClick={handleClick}
+                todos={todos}
             />
             {completedCount > 0 && (
                 <button
