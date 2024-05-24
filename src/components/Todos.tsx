@@ -43,6 +43,7 @@ export const Todos: React.FC<Props> = ({ todos, handleRemove, handleCompleted, s
     const [parent] = useAutoAnimate();
     return (
         <ul ref={parent} className='todo-list'>
+            <span className='todoSuggest'>Debes dar doble click en la tarea para modificarla</span>
             {todos?.map(todo => (
                 <li
                     key={todo.id}

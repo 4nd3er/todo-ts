@@ -56,7 +56,6 @@ export const Todo: React.FC<Props> = ({ id, title, completed, handleRemove, hand
                 />
             </div>
             <input
-                id="edit"
                 className='edit'
                 value={editedTitle}
                 onChange={(e) => { setEditedTitle(e.target.value) }}

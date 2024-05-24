@@ -18,6 +18,16 @@
     font-size: .75rem;
 }
 
+.todoSuggest {
+    font-size: 0.5rem;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: -5rem;
+    right: 1rem;
+    color: gray;
+}
+
 .copyBtn:hover {
     border-color: #DB7676;
 }
