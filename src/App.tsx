@@ -197,23 +197,25 @@ const App = (): JSX.Element => {
     });
 
     return (
-        <div className='todoapp'>
-            <Header onAddTodo={handleAddTodo} />
-            <Todos
-                todos={filterTodos}
-                handleRemove={handleRemove}
-                handleCompleted={handleCompleted}
-                setTitle={setTitle}
-            />
-            <Footer
-                activeCount={activeCount}
-                completedCount={completedCount}
-                filterSelected={filterSelected}
-                onClearCompleted={onClearCompleted}
-                handleFilterChange={handleFilterChange}
-                handleClick={handleClick}
-                todos={todos}
-            />
+        <>
+            <div className='todoapp'>
+                <Header onAddTodo={handleAddTodo} />
+                <Todos
+                    todos={filterTodos}
+                    handleRemove={handleRemove}
+                    handleCompleted={handleCompleted}
+                    setTitle={setTitle}
+                />
+                <Footer
+                    activeCount={activeCount}
+                    completedCount={completedCount}
+                    filterSelected={filterSelected}
+                    onClearCompleted={onClearCompleted}
+                    handleFilterChange={handleFilterChange}
+                    handleClick={handleClick}
+                    todos={todos}
+                />
+            </div>
             {todos.length > 0 && (
                 <section className="sectionBtn">
                     <a className="copyBtn" onClick={handleClick}>
@@ -221,7 +223,7 @@ const App = (): JSX.Element => {
                     </a>
                 </section>
             )}
-        </div>
+        </>
     );
 };
 

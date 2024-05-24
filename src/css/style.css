@@ -1,10 +1,23 @@
 .sectionBtn {
-    padding: 1rem;
     position: relative;
     z-index: 10;
+    display: flex;
+    justify-content: end;
+    align-items: end;
 }
 
 .copyBtn {
+    color: inherit;
+    margin: 3px;
+    padding: 3px 7px;
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    margin-right: 1rem;
     cursor: pointer;
     font-size: .75rem;
+}
+
+.copyBtn:hover {
+    border-color: #DB7676;
 }
