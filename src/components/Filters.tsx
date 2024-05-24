@@ -36,7 +36,7 @@ export const Filters: React.FC<Props> = (
             })}
             {todos.length > 0 && (
                 <li>
-                    <a onClick={handleClick}>
+                    <a className="copyBtn" onClick={handleClick}>
                         Copiar lista de tareas
                     </a>
                 </li>

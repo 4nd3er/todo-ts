@@ -1,0 +1,8 @@
+.filters {
+    position: relative;
+}
+
+.copyBtn {
+    cursor: pointer;
+    font-size: .75rem;
+}

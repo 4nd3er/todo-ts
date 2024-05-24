@@ -174,7 +174,7 @@ import { Footer } from './components/Footer';
 import { Header } from './components/Header';
 import { TodoProvider, useTodos } from './context/TodoContext';
 import { TODO_FILTERS } from './consts';
-
+import '.././src/css/style.css';
 const App = (): JSX.Element => {
     const {
         todos,
