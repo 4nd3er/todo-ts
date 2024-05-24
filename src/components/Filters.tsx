@@ -8,14 +8,7 @@ interface Props {
     todos: ListOfTodos
 }
 
-export const Filters: React.FC<Props> = (
-    {
-        filterSelected,
-        handleFilterChange,
-        handleClick,
-        todos
-    }
-) => {
+export const Filters: React.FC<Props> = ({ filterSelected, handleFilterChange }) => {
     return (
         <ul className="filters">
             {Object.entries(FILTER_BUTTONS).map(([key, { href, literal }]) => {
@@ -34,13 +27,6 @@ export const Filters: React.FC<Props> = (
                     </li>
                 )
             })}
-            {todos.length > 0 && (
-                <li>
-                    <a className="copyBtn" onClick={handleClick}>
-                        Copiar lista de tareas
-                    </a>
-                </li>
-            )}
         </ul>
     )
 }

@@ -214,6 +214,13 @@ const App = (): JSX.Element => {
                 handleClick={handleClick}
                 todos={todos}
             />
+            {todos.length > 0 && (
+                <section className="sectionBtn">
+                    <a className="copyBtn" onClick={handleClick}>
+                        Copiar lista de tareas
+                    </a>
+                </section>
+            )}
         </div>
     );
 };

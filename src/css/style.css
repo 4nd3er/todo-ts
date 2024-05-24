@@ -1,5 +1,7 @@
-.filters {
+.sectionBtn {
+    padding: 1rem;
     position: relative;
+    z-index: 10;
 }
 
 .copyBtn {

@@ -72,7 +72,7 @@ export const TodoProvider = ({ children }: { children: ReactNode }) => {
         navigator.clipboard.writeText(text);
         Swal.mixin({
             toast: true,
-            position: 'top-end',
+            position: 'top-start',
             timer: 2000,
             timerProgressBar: true
         }).fire({
